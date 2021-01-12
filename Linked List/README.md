@@ -23,9 +23,8 @@ head --->|        |--->|        |--->|        |--->|        |---> nil
 연결 리스트의 시작이 어디인지 추적할 필요가 있으므로, head(포인터)로 시작 노드를 연결한다.  
 
 ## Why use a linked list
-대표적으로는 queue가 필요할 때 linked list를 사용한다.  
-배열의 경우 배열의 맨 앞 element를 제거하려면, element를 제거하고 뒤에 element들을 한 자리씩 이동시켜야 하므로 느리다.  
-하지만 linked list라면 head의 포인터만 바꾸면 되므로 훨씬 빠르다.  
+대표적으로 [queue](https://github.com/lenaios/swift-algorithm/tree/main/Queue)를 구현할 때 linked list가 사용된다.  
+배열과 비교해서 배열은 맨 앞 element를 제거할 때, element를 제거하고 뒤에 element들을 한 자리씩 이동시켜야 하므로 속도가 느리지만, linked list는 head의 포인터만 바꾸면 되므로 훨씬 빠르다.  
 이처럼 객체를 연결하는 개념이 trees와 graphs에서도 사용된다.  
 
 ## Linked List Implementation in Swift
@@ -141,6 +140,24 @@ public class Node<T> {
 
   init(value: T) {
     self.value = value
+  }
+}
+
+public class LinkedList<T> {
+
+  fileprivate var head: Node<T>?
+  private var tail: Node<T>?
+
+  public var isEmpty: Bool {
+    return head == nil
+  }
+  
+  public var first: Node<T>? {
+    return head
+  }
+
+  public var last: Node<T>? {
+    return tail
   }
 }
 ```
